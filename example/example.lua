@@ -1,51 +1,3 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
-
-local Window = Library:CreateWindow("thing")
-
-local folder = Window:AddFolder('stuff')
-folder:AddToggle({text = "This is a toggle", callback = function(v) print(v) end})
-folder:AddButton({text = 'button', callback = function() print('button clicked') end})
-folder:AddSlider({text = 'slider', min = 1, max = 100, callback = function(v) print(v) end})
-folder:AddList({text = 'option', values = {'yo', 'yes'}, callback = function(v) print(v) end})
-folder:AddBox({text = 'text box', callback = function(v) print(v) end})
-folder:AddColor({text = 'color', callback = function(v) print(v) end})
-Alec — Today at 14:33
-Elerium [IMGUI]
-Image
-WE GOT IT
-CHAT WILL BLOW THE FUCK UP
-YAY
-:catparty:
-FUCK
-BOOT UP BREAD TICKETS MAFAKA
-AAA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKABOOT UP BREAD TICKETS MAFAKA
-BOOT UP BREAD TICKETS MAFAKA
-@Fade
-@Fade
-@Fade
-@Fade
-Fade — Today at 14:38
-local FadeUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sheepy9999/FadeUI/main/source/main.lua", true))()
-
-local Window = FadeUI.new("FadeUI UI", "v1.0.0", 4370345701)
-
-local Tab1 = Window.Tab("Tab 1", 6026568198)
-local Folder = Tab1.Folder("Options", "A bunch of options you can use")
-Expand
-message.txt
-6 KB
-Alec — Today at 14:38
-@Fade
-@Fade
-@Fade
-﻿
 local FadeUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sheepy9999/FadeUI/main/source/main.lua", true))()
 
 local Window = FadeUI.new("FadeUI UI", "v1.0.0", 4370345701)
@@ -140,5 +92,3 @@ if Input.KeyCode == Enum.KeyCode.F then
 Window:Toggle()
 end
 end)
-message.txt
-6 KB
