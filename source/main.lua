@@ -32,6 +32,8 @@ if _G.FadeUI_Loaded and _G.FadeUI then
     _G.FadeUI:Destroy()
 end
 
+
+
 -- Set Globals --
 _G.FadeUI_Loaded = true
 _G.FadeUI = nil
@@ -936,8 +938,6 @@ function FadeUI.new(Name, Header, Icon)
                         Text = Name and tostring(Name) or "FadeUI",
                         TextColor3 = Color3.fromRGB(255, 255, 255),
                         TextScaled = true,
-                        TextWrapped = true,
-                        TextXAlignment = Enum.TextXAlignment.Left
                     }),
                     Utility.new("TextLabel", {
                         Name = "Header",
@@ -1005,7 +1005,6 @@ function FadeUI.new(Name, Header, Icon)
                             ImageColor3 = Color3.fromRGB(0, 0, 0),
                             ImageTransparency = 0.75,
                             ScaleType = Enum.ScaleType.Slice,
-                            SliceCenter = Rect.new(10, 10, 118, 118)
                         })
                     }),
                     Utility.new("Frame", {
@@ -1423,68 +1422,6 @@ function FadeUI.new(Name, Header, Icon)
                     Utility.new("UIListLayout", {
                         Padding = UDim.new(0, 1),
                         HorizontalAlignment = Enum.HorizontalAlignment.Center,
-                        SortOrder = Enum.SortOrder.LayoutOrder
-                    })
-                })
-            })
-            Base.Info.Description.Size = UDim2.new(1, 0, 0, Services.TextService:GetTextSize(Base.Info.Description.Text, 14, Enum.Font.Gotham, Vector2.new(Base.Info.Description.AbsoluteSize.X, math.huge)).Y + 5)
-
-            local Info = {
-                Toggled = false;
-                Collapsed = true;
-            }
-
-            local FolderTweens = {
-                [true] = {
-                    function()
-                        Utility.Tween(Base, TweenInfo.new(0.5), {Size = UDim2.new(1, 0, 0, 45 + Base.Info.UIListLayout.AbsoluteContentSize.Y)}):Play()
-                        Utility.Wait(0.1)
-                        Base.Icon.Image = "rbxassetid://6026681577"
-                    end,
-                    Utility.Tween(Base.Arrow, TweenInfo.new(0.5), {ImageTransparency = 0, Rotation = 180}),
-                    Utility.Tween(Base.Title, TweenInfo.new(0.5), {TextTransparency = 0, TextColor3 = FadeUI.ColorScheme.Primary}),
-                    Utility.Tween(Base.Icon, TweenInfo.new(0.5), {ImageTransparency = 0, ImageColor3 = FadeUI.ColorScheme.Primary}),
-                };
-                [false] = {
-                    function()
-                        Utility.Wait(0.1)
-                        Base.Icon.Image = "rbxassetid://6031625146"
-                    end,
-                    Utility.Tween(Base, TweenInfo.new(0.5), {Size = UDim2.new(1, 0, 0, 40)}),
-                    Utility.Tween(Base.Arrow, TweenInfo.new(0.5), {ImageTransparency = 0.3, Rotation = 0}),
-                    Utility.Tween(Base.Title, TweenInfo.new(0.5), {TextTransparency = 0.3, TextColor3 = Color3.fromRGB(255, 255, 255)}),
-                    Utility.Tween(Base.Icon, TweenInfo.new(0.5), {ImageTransparency = 0.3, ImageColor3 = Color3.fromRGB(255, 255, 255)}),
-                };
-            }
-
-            local SwitchTweens = {
-                [true] = {
-                    Utility.Tween(Base.Switch, TweenInfo.new(0.5), {BackgroundColor3 = FadeUI.ColorScheme.Primary}),
-                    Utility.Tween(Base.Switch.Circle, TweenInfo.new(0.25), {AnchorPoint = Vector2.new(1, 0.5), Position = UDim2.new(1, 0, 0.5, 0)})
-                };
-
-                [false] = {
-                    Utility.Tween(Base.Switch, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(100, 100, 100)}),
-                    Utility.Tween(Base.Switch.Circle, TweenInfo.new(0.25), {AnchorPoint = Vector2.new(0, 0.5), Position = UDim2.new(0, 0, 0.5, 0)})
-                };
-            }
-
-            Base.InputBegan:Connect(function(Input)
-                if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-                    for i,v in ipairs(FolderTweens[Info.Collapsed]) do
-                        if typeof(v) == "function" then
-                            coroutine.wrap(v)()
-                        else
-                            v:Play()
-                        end
-                    end
-                    Info.Collapsed = not Info.Collapsed
-                    Utility.Wait()
-                    DragPro.Dragging = false
-                end
-            end)
-
-            Base.Switch.MouseButton1Down:Connect(function()
                 Info.Toggled = not Info.Toggled
                 for i,v in ipairs(SwitchTweens[Info.Toggled]) do
                     v:Play()
@@ -1543,7 +1480,6 @@ function FadeUI.new(Name, Header, Icon)
             Main.SideBar.Info.Title.Text = Value and tostring(Value) or "FadeUI"
         elseif Index == "Header" then
             Main.SideBar.Info.Header.Text = Value and tostring(Value) or "v1.0.0"
-        elseif Index == "Icon" then
             Main.SideBar.Info.Logo.Image = Value and "rbxassetid://" .. tostring(Value) or "rbxassetid://4370345701"
         end
         rawset(Self, Index, Value)
